@@ -51,6 +51,7 @@ const SignIn=()=>{
             }
         }).then((data)=>{
             Authctx.login(data.idToken)
+            History('/Dummy')
             console.log('login done')
         }).catch((err)=>{
             alert(err.message)
