@@ -1,0 +1,37 @@
+.background{
+    background-color: antiquewhite;
+    display: grid;
+}
+.backgnd{
+    background-color: rgb(9, 209, 209);
+    border-radius: 12px ;
+    margin-top: 8rem;
+    margin-left: 30rem;
+    margin-right: 10rem;
+    font-family:'Times New Roman', Times, serif ;
+}
+
+.input{
+    margin-top: 2rem;
+    width:450px;
+    margin-left: 9rem;
+}
+.text{
+    padding-top: 5rem; 
+    text-align: center;
+}
+.linkbtn{
+   margin-top: 2rem;
+   margin-left: 10rem;
+    border-radius: 12px;
+    border: 1px solid gray;
+    /* border-color: blue; */
+    background-color: blue;
+    border: none;
+    width: 400px;
+}
+.loginbtn{
+    margin-top: 1rem;
+    margin-left: 17rem;
+    margin-bottom: 5rem;
+}

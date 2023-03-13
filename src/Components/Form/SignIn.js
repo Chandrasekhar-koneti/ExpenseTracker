@@ -1,6 +1,7 @@
 import { useContext, useRef, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
+import ForgetPass from '../Forgetpass'
 import AuthContext from '../Store/AuthContext'
 import classes from './Signin.module.css'
 const SignIn=()=>{    
@@ -72,6 +73,7 @@ return(
             <input type='password' id='password' required ref={passwordref} placeholder='Password'/>
         </div>
         {/* <span>{error}</span> */}
+        <Link to='/Forget'>Forgot Password</Link>
                 <div>
                 <Button variant="primary" type="submit" className={classes.btn}>SignIn</Button>
                 {isLoading && <p>Sending request...</p>}

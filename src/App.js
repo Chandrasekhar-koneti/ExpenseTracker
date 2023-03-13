@@ -6,6 +6,7 @@ import { createBrowserRouter, Route,RouterProvider,Switch } from 'react-router-d
 import SignIn from './Components/Form/SignIn';
 import Profile from './Components/Profile';
 import ProfileUpdate from './Components/ProfileUpdate';
+import ForgetPass from './Components/Forgetpass';
 
 function App() {
   const router1=createBrowserRouter([
@@ -13,7 +14,8 @@ function App() {
   {path:'/',element:<SignIn />},
   {path:'/login',element:<SignUp />},
   {path:'/Profile',element:<Profile />},
-  {path:'/Update',element:<ProfileUpdate />}
+  {path:'/Update',element:<ProfileUpdate />},
+  {path:'/Forget',element:<ForgetPass />}
 ])
   return (
     <>
