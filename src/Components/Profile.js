@@ -1,14 +1,20 @@
 import { useContext, useState } from "react"
 import { Button, NavLink } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import classes from './Profile.module.css'
 import AuthContext from "./Store/AuthContext"
 
 const Profile=()=>{
     const Authctx=useContext(AuthContext)
     const token=Authctx.token
+    const History=useNavigate()
 
     const[verify,setverify]=useState(false)
+
+    const logoutHandler=()=>{
+        Authctx.logout()
+        History('/')
+    }
 
     const verifyEmailHandler=()=>{
             fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBhalM_NXSwUwlqwQ5bT1AvnoLsag34f2M',
@@ -48,12 +54,15 @@ const Profile=()=>{
         <h3>Welcome to Expense Tracker</h3>
     </div>
     <p className={classes.p}>Your Profile is Incomplete.<Link to='/Update'>Complete Now</Link></p> 
+    <Button onClick={logoutHandler} style={{marginLeft:'75rem'}}>Logout</Button>
+
     <hr ></hr>
     <div>
         {!verify && <Button variant="success" style={{marginLeft:'37rem',marginTop:'2rem'}} 
         onClick={verifyEmailHandler}>Veryify EmailId</Button>}
     </div>
     {verify && <Button variant="success" style={{marginLeft:'37rem',marginTop:'2rem'}} >Verified</Button>}
+
 
 
     </>

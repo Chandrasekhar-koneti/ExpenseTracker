@@ -4,10 +4,12 @@ import GitHub from "./Images/GitHub.png"
 import Url from './Images/Url.png'
 import { Fragment, useContext, useRef, useState } from "react"
 import AuthContext from "./Store/AuthContext"
+import { useNavigate } from "react-router-dom"
 
 const ProfileUpdate=()=>{
     const nameref=useRef()
     const linkref=useRef()
+    const History=useNavigate()
     const [loggedInUser, setLoggedInUser] = useState('')
     const [loggedInUser1, setLoggedInUser1] = useState('')
 
@@ -15,6 +17,11 @@ const ProfileUpdate=()=>{
     const Authctx=useContext(AuthContext)
     const token=Authctx.token
     console.log(token)
+
+    const logoutHandler=()=>{
+        Authctx.logout()
+        History('/')
+    }
 
     const editHandler = ()=> {
         setUpdateProfile(true);
@@ -110,6 +117,8 @@ const ProfileUpdate=()=>{
     return(
         <Fragment>
         <p className={classes.p}>Winners Never Quite, Quitters Never Win</p>
+        <Button onClick={logoutHandler} className={classes.logoutbtn}>Logout</Button>
+
         <div className={classes.control}>
             <h6 >Your profile is 64% completed. A complete profile has higher chance of landing a job</h6>
         </div>

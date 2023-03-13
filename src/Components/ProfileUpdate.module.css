@@ -10,7 +10,8 @@
 } 
 
 .control h6{
-    margin-left: 75%;
+    margin-left:40%;
+    margin-right: 30%;
     background-color:antiquewhite;
     position: absolute; top: 0.5rem;right: 1%;
     border-radius: 12px;
@@ -59,4 +60,8 @@
     margin-left: 2rem;
     margin-right: 2rem;
 
+}
+
+.logoutbtn{
+    position:absolute;top:0.7rem;left:75rem
 }
