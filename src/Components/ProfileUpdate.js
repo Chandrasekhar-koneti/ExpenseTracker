@@ -2,15 +2,24 @@ import { Button } from "react-bootstrap"
 import classes from './ProfileUpdate.module.css'
 import GitHub from "./Images/GitHub.png"
 import Url from './Images/Url.png'
-import { Fragment, useContext, useRef } from "react"
+import { Fragment, useContext, useRef, useState } from "react"
 import AuthContext from "./Store/AuthContext"
 
 const ProfileUpdate=()=>{
     const nameref=useRef()
     const linkref=useRef()
+    const [loggedInUser, setLoggedInUser] = useState('')
+    const [loggedInUser1, setLoggedInUser1] = useState('')
+
+    const [updateProfile, setUpdateProfile] = useState(true)
     const Authctx=useContext(AuthContext)
     const token=Authctx.token
     console.log(token)
+
+    const editHandler = ()=> {
+        setUpdateProfile(true);
+        nameref.current.value= loggedInUser;
+      }
 
     const cancelhandler=()=>{
         nameref.current.value=''
@@ -29,8 +38,8 @@ const ProfileUpdate=()=>{
             method:'POST',
             body:JSON.stringify({
                 idToken:token,
-                name:enteredname,
-                link:enteredlink,
+                displayName:enteredname,
+                photoUrl:enteredlink,
                 returnSecureToken:true
             }),
             headers:{
@@ -55,10 +64,51 @@ const ProfileUpdate=()=>{
             alert('profile is updated')
             nameref.current.value=''
             linkref.current.value=''
-        }).catch((err)=>{
-            alert(err.message)
-        })
-    }
+
+            fetch( 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBhalM_NXSwUwlqwQ5bT1AvnoLsag34f2M',
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    idToken:token,
+
+
+                }),
+                headers:{
+                    'Content-Type': 'application/json',
+                }
+            }).then((res) => {
+
+                if (res.ok) {
+                  return res.json();
+
+
+                } else {
+                  return res.json().then((data) => {
+                    let errorMessage = 'Authentication failed!';
+                    if (data && data.error && data.error.message) {
+                      errorMessage = data.error.message;
+                    }
+                    throw new Error(errorMessage);
+                  });
+                }
+              }).then(data => {
+                console.log('fetched data',data.users[0].displayNameame);
+                let userName = data.users[0].displayName;
+                let photourl=<img src="data.users[0].photoUrl"></img>
+                setLoggedInUser(userName)
+                setLoggedInUser(photourl)
+
+                setUpdateProfile(false)
+
+              }).catch(err => {
+                  alert(err.message);
+              });
+
+                  }).catch(err => {
+                      alert(err.message);
+                  });
+            }
+
     return(
         <Fragment>
         <p className={classes.p}>Winners Never Quite, Quitters Never Win</p>
@@ -90,6 +140,13 @@ const ProfileUpdate=()=>{
                 </div>
                <hr style={{marginLeft:'15%',marginRight:'15%',fontWeight:'bold'}}></hr>
         </div>
+
+        {!updateProfile && <div  style={{ display:'flex',justifyContent: 'space-evenly' }}>
+
+        <div > <span style={{color:'navy'}}>UserName :</span> {loggedInUser}</div>
+        <div > <span style={{color:'navy'}}>Photo :</span> {loggedInUser}</div>
+        <Button variant="outline-success" onClick={editHandler} >Edit Details</Button>
+        </div>}
 </Fragment>
     )
 }
