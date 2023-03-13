@@ -70,8 +70,6 @@ const ProfileUpdate=()=>{
                 method: 'POST',
                 body: JSON.stringify({
                     idToken:token,
-
-
                 }),
                 headers:{
                     'Content-Type': 'application/json',
