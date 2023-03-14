@@ -1,9 +1,9 @@
 import { Button } from "react-bootstrap"
 import classes from './ProfileUpdate.module.css'
-import GitHub from "./Images/GitHub.png"
-import Url from './Images/Url.png'
+import GitHub from "../Images/GitHub.png"
+import Url from '../Images/Url.png'
 import { Fragment, useContext, useRef, useState } from "react"
-import AuthContext from "./Store/AuthContext"
+import AuthContext from "../Store/AuthContext"
 import { useNavigate } from "react-router-dom"
 
 const ProfileUpdate=()=>{

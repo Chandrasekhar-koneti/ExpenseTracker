@@ -1,7 +1,7 @@
 import { useContext, useRef, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
-import ForgetPass from '../Forgetpass'
+import ForgetPass from '../Profile/Forgetpass'
 import AuthContext from '../Store/AuthContext'
 import classes from './Signin.module.css'
 const SignIn=()=>{    
@@ -52,7 +52,7 @@ const SignIn=()=>{
             }
         }).then((data)=>{
             Authctx.login(data.idToken)
-            History('/Profile')
+            History('/Main')
             console.log('login done')
         }).catch((err)=>{
             alert(err.message)

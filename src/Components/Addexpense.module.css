@@ -1,0 +1,67 @@
+.nav{
+    background-color: black;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.logoutbtn{
+    margin-left: 50rem;
+}
+.profile{
+    margin-left:10rem ;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-left: 20rem;
+    color: white;
+    text-decoration: none;
+    font-size:xx-large;
+    /* position: absolute; top:0.5rem; left:15rem; */
+}
+
+.backgnd{
+    background-color: whitesmoke;
+    margin-left:25rem ;
+    margin-right: 25rem;
+    margin-bottom:0rem;
+    border-radius: 12px;
+}
+.text{
+    padding-top: 1rem;
+
+    margin-top: 3rem;
+    margin-left: 10rem;
+}
+.input{
+    width: 400px;
+    margin-left: 5.5rem;
+    margin-top: 0.5rem;
+}
+.hr{
+    margin-left: 14rem;
+}
+.btn{
+    margin-left: 12rem;
+    margin-right: 0.5rem;
+}
+.b{
+    padding-top: 1rem;
+}
+
+.data{
+    margin-top: 0.5rem;
+    background-color: rgb(241, 245, 245);
+    border-radius: 12px ;
+    margin-left: 12rem;
+    margin-right: 12rem;
+    border-color: black;   
+}
+
+.title{
+    padding-left: 05rem;
+}
+.des{
+    padding-left: 05rem;
+}
+.amount{
+    padding-left: 05rem;
+
+}

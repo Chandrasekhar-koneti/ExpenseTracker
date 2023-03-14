@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { Button, NavLink } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 import classes from './Profile.module.css'
-import AuthContext from "./Store/AuthContext"
+import AuthContext from "../Store/AuthContext"
 
 const Profile=()=>{
     const Authctx=useContext(AuthContext)
