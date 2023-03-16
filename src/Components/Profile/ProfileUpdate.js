@@ -38,7 +38,7 @@ const ProfileUpdate=()=>{
         const enteredname=nameref.current.value
         const enteredlink=linkref.current.value
         let url
-        if(enteredname!=" " || enteredlink !==" "){
+        if(enteredname!==" " || enteredlink !==" "){
             url='https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyBhalM_NXSwUwlqwQ5bT1AvnoLsag34f2M'
         }
         fetch(url,{

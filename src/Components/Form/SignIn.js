@@ -51,7 +51,7 @@ const SignIn=()=>{
                 })
             }
         }).then((data)=>{
-            Authctx.login(data.idToken)
+            Authctx.login(data.idToken,data.email)
             History('/Main')
             console.log('login done')
         }).catch((err)=>{
