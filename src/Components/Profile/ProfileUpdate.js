@@ -11,7 +11,6 @@ const ProfileUpdate=()=>{
     const linkref=useRef()
     const History=useNavigate()
     const [loggedInUser, setLoggedInUser] = useState('')
-    const [loggedInUser1, setLoggedInUser1] = useState('')
 
     const [updateProfile, setUpdateProfile] = useState(true)
     const Authctx=useContext(AuthContext)
