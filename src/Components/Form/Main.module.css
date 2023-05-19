@@ -1,0 +1,28 @@
+.main{
+background-color: rgb(1, 7, 7);
+padding: 1rem;
+}
+
+.profile{
+ padding:0.5rem;
+ margin-left:8rem ;
+ font-family: 'Times New Roman', Times, serif;
+ font-weight: bold;
+ /* margin-left: 20rem; */
+ color: white;
+ text-decoration: none;
+ font-size:xx-large;
+}
+
+.expense{
+    margin-left: 1rem;
+    padding: 0.5rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+    font-size:xx-large;
+    text-decoration:none;
+}
+.btn{
+    margin-left:45rem;
+}

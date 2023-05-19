@@ -18,3 +18,16 @@
 .hr{
     font-weight: bold;
 }
+.expense{
+    font-family: 'Times New Roman', Times, serif;
+    font-size:x-large;
+    text-decoration: none;
+    color: brown;
+    padding-left: 0.3rem;
+    font-weight: bold;
+    border-style:ridge;
+    /* border-color:rgb(46, 164, 233); */
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.2rem;    
+}

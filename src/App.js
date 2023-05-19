@@ -19,7 +19,7 @@ function App() {
   {path:'/Update',element:<ProfileUpdate />},
   {path:'/Forget',element:<ForgetPass />},
   {path:'/Main',element:<Main />},
-  {path:'/AddExpense',element:<AddExpense />}
+  {path:'/Addexpense',element:<AddExpense />}
 ])
   return (
     <>

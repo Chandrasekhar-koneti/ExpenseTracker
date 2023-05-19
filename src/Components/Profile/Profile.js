@@ -3,16 +3,23 @@ import { Button, NavLink } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 import classes from './Profile.module.css'
 import AuthContext from "../Store/AuthContext"
+import { useDispatch } from "react-redux"
+import { authActions } from "../Store/Auth-slice"
 
 const Profile=()=>{
     const Authctx=useContext(AuthContext)
-    const token=Authctx.token
+    const dispatch=useDispatch()
+    // const token=Authctx.token
+    const token=localStorage.getItem('idToken')
     const History=useNavigate()
 
     const[verify,setverify]=useState(false)
 
     const logoutHandler=()=>{
-        Authctx.logout()
+        localStorage.removeItem('idToken')
+        localStorage.removeItem('isLoggedIn')
+        dispatch(authActions.logout())
+        // Authctx.logout()
         History('/')
     }
 
@@ -54,7 +61,9 @@ const Profile=()=>{
         <h3>Welcome to Expense Tracker</h3>
     </div>
     <p className={classes.p}>Your Profile is Incomplete.<Link to='/Update'>Complete Now</Link></p> 
-    <Button onClick={logoutHandler} style={{marginLeft:'75rem'}}>Logout</Button>
+    <Link className={classes.expense} to='/Addexpense'>AddExpense</Link>
+
+    <Button onClick={logoutHandler} style={{marginLeft:'65rem'}}>Logout</Button>
 
     <hr ></hr>
     <div>

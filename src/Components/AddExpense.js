@@ -4,12 +4,15 @@ import { Button } from "react-bootstrap"
 import { NavLink, useNavigate } from "react-router-dom"
 import classes from './Addexpense.module.css'
 import AuthContext from "./Store/AuthContext"
+import { useDispatch } from "react-redux"
+import { authActions } from "./Store/Auth-slice"
 
 const AddExpense=()=>{
 
     const titleref=useRef()
     const descriptionref=useRef()
     const amountref=useRef()
+    const dispatch=useDispatch()
 
     const [description, setDescription] = useState('');
     const [title, setTitle] = useState('');
@@ -23,7 +26,7 @@ const AddExpense=()=>{
     const existingItems = [...items];
     let totalAmount = 0
 
-    const Authctx=useContext(AuthContext)
+    // const Authctx=useContext(AuthContext)
     const History=useNavigate()
 
     let mail = localStorage.getItem('email');
@@ -109,7 +112,10 @@ const AddExpense=()=>{
       },[fetchData])
 
     const logoutHandler=()=>{
-        Authctx.logout()
+      localStorage.removeItem('userMail')
+      localStorage.removeItem('isLoggedIn')
+      dispatch(authActions.logout())
+        // Authctx.logout()
         History('/')
     }
     const updateExpenseHandler=(id)=>{

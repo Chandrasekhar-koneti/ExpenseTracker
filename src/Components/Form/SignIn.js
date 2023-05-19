@@ -1,4 +1,6 @@
-import { useContext, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { authActions } from '../Store/Auth-slice'
 import { Button } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import ForgetPass from '../Profile/Forgetpass'
@@ -7,11 +9,18 @@ import classes from './Signin.module.css'
 const SignIn=()=>{    
     const Authctx=useContext(AuthContext)
     const History=useNavigate()
+    const dispatch=useDispatch()
     const emailinputref=useRef()
     const passwordref=useRef()
     const[isLoading,setisLoading]=useState(false)
     const[isLogin,setisLogin]=useState(true)
-    const[error,seterror]=useState(false)
+    // const[error,seterror]=useState(false)
+
+    const storedToken=localStorage.getItem('tokenID')
+
+    useEffect(()=>{
+        dispatch(authActions.login(storedToken))
+    },[])
 
     const switchAuthModeHandler = () => {
         setisLogin((prevState) => !prevState);
@@ -51,7 +60,8 @@ const SignIn=()=>{
                 })
             }
         }).then((data)=>{
-            Authctx.login(data.idToken,data.email)
+            // Authctx.login(data.idToken,data.email)
+            dispatch(authActions.login(data.idToken))
             History('/Main')
             console.log('login done')
         }).catch((err)=>{

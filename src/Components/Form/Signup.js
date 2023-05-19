@@ -1,11 +1,15 @@
 import { Button } from "react-bootstrap"
-import { useContext, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import classes from './Signup.module.css'
 import AuthContext from "../Store/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { authActions } from "../Store/Auth-slice"
 
 
 const SignUp=()=>{
+    const dispatch=useDispatch()
+
     const Authctx=useContext(AuthContext)
     const[isLoading,setisLoading]=useState(false)
     const[isLogin,setisLogin]=useState(true)
@@ -14,6 +18,12 @@ const SignUp=()=>{
     const emailinputref=useRef()
     const passwordref=useRef()
     const Conformpasswordref=useRef()
+
+    const storedToken=localStorage.getItem('tokenID')
+
+    useEffect(()=>{
+        dispatch(authActions.login(storedToken))
+    },[])
 
     // const strongRegex= new RegExp(
     //     '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|]).{8,32}$'
@@ -72,7 +82,8 @@ if(enteredpassword === enteredconformpassword){
                 })
             }
         }).then((data)=>{
-            Authctx.login(data.idToken)
+            dispatch(authActions.login(data.idToken))
+            // Authctx.login(data.idToken)
             console.log(' done')
         }).catch((err)=>{
             alert(err.message)

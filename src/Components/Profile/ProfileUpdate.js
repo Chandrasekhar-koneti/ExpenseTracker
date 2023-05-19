@@ -5,20 +5,26 @@ import Url from '../Images/Url.png'
 import { Fragment, useContext, useRef, useState } from "react"
 import AuthContext from "../Store/AuthContext"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { authActions } from "../Store/Auth-slice"
 
 const ProfileUpdate=()=>{
     const nameref=useRef()
     const linkref=useRef()
     const History=useNavigate()
     const [loggedInUser, setLoggedInUser] = useState('')
-
     const [updateProfile, setUpdateProfile] = useState(true)
     const Authctx=useContext(AuthContext)
-    const token=Authctx.token
+    // const token=Authctx.token
+    const dispatch=useDispatch()
+    const token=localStorage.getItem('idToken')
     console.log(token)
 
     const logoutHandler=()=>{
-        Authctx.logout()
+        localStorage.removeItem('userMail')
+        localStorage.removeItem('isLoggedIn')
+        dispatch(authActions.logout())
+        // Authctx.logout()
         History('/')
     }
 
