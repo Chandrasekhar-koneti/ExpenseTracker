@@ -48,6 +48,7 @@ const SignIn=()=>{
             setisLoading(false)
             if(res.ok){
                 console.log('signuuup done')
+                localStorage.setItem('email',enteredemail)
                 return res.json()
             }
             else{
